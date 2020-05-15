@@ -1,0 +1,69 @@
+body{
+    margin: 0px;
+}
+
+.login-form-containter{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-auto-rows: 1fr;
+
+    width: 100vw;
+    height: 100vh;
+
+    justify-items: center;
+    align-items: center;
+}
+
+.login-form-containter > *:first-child{
+    margin: 0px;
+    width: 100%;
+    background-color: rgb(75, 75, 75);
+}
+
+.login-form-containter > *:first-child > *{
+    text-align: center;
+    color: white;
+}
+
+.login-form{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: 1fr 1fr 1fr;
+
+    grid-template-areas: 
+    "un un un un un un un un"
+    "up up up up up up up up"
+    "cb cb cb cb lb lb lb lb"
+    ;
+
+    background-color: gray;
+
+    width: 70%;
+    height: 100px;
+
+}
+
+
+.form-content-user-name{
+    grid-area: un;
+}
+
+.form-content-user-password{
+    grid-area: up;
+}
+
+.form-content-create-button{
+    grid-area: cb;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-content-login-button{
+    grid-area: lb;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+

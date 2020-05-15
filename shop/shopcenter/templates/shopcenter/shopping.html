@@ -1,0 +1,33 @@
+{% extends "shopcenter/base-shop.html" %}
+{% load static %}
+
+{% block shop_links %}
+    <link rel="stylesheet" href="{% static 'shop/css/shopping.css' %}">
+{% endblock shop_links %}
+
+
+{% block shop_content %}
+    <div class="selection-view">
+        {% for item in selection %}
+            <div class="item-grid">
+                <h3 class="item-grid-title-item">{{item.title}}</h3>
+                <img src="{{item.img}}" alt="" class="item-grid-product-img">
+                <p class="item-grid-product-disc">{{item.disc}}</p>
+                <h3 class="item-grid-product-price">{{item.price}}</h3>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock shop_content %}
+
+
+{% block shop_javascript %}
+    <script src="{% static 'shop/js/shopping.js' %}"></script>
+    <script>
+        const item_url = "{% url 'ajax-go-to-item' %}"
+        urls = {
+            "item_url": item_url
+        }
+        
+        shopping(urls)
+    </script>
+{% endblock shop_javascript %}

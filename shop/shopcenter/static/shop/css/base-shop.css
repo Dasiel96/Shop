@@ -1,0 +1,120 @@
+body{
+    --nav-bar-height: 50px;
+    --offset-from-page-top: 30px;
+    --grid-height: auto;
+    --item-img-height: 200px
+}
+
+.item-grid{
+    display: grid;
+    grid-template-columns: auto repeat(8, 1fr) auto;
+    grid-template-areas:
+    "ti-b1 ti-tit ti-tit ti-tit ti-tit ti-tit ti-tit ti-tit ti-tit ti-b2"
+    "ti-b1 ti-img ti-img ti-img ti-img ti-img ti-img ti-dis ti-dis ti-b2"
+    "ti-b1 ti-img ti-img ti-img ti-img ti-img ti-img ti-dis ti-dis ti-b2"
+    "ti-b1 ti-prc ti-prc ti-prc ti-prc ti-prc ti-prc ti-prc ti-prc ti-b2"
+    ;
+
+    width: 100%;
+    height: 100%;
+
+    column-gap: 10px;
+}
+
+.item-grid-title-item{
+    grid-area: ti-tit;
+    text-align: center;
+}
+
+.item-grid-back-btn{
+    grid-area: ti-b1;
+    width: 50px;
+}
+
+.item-grid-next-btn{
+    grid-area: ti-b2;
+    width: 50px;
+}
+
+.item-grid-product-img{
+    grid-area: ti-img;
+    height: var(--item-img-height);
+    width: 60%;
+    margin-left: auto;
+    margin-right: 70px;
+}
+
+.item-grid-product-disc{
+    grid-area: ti-dis;
+    height: var(--item-img-height);
+    overflow: hidden;
+}
+
+.item-grid-product-price{
+    grid-area: ti-prc;
+    text-align: center;
+}
+
+.banner{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+
+    height: var(--offset-from-page-top);
+    line-height: var(--offset-from-page-top);
+    text-align: center;
+
+    column-gap: 5px;
+
+    background-color: rgb(75, 75, 75);
+}
+
+.banner > *{
+    margin: 0px;
+}
+
+.banner > h1{
+    color: white;
+}
+
+
+.base-shop-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--nav-bar-height);
+    grid-auto-rows: 1fr;
+
+    width: 100%;
+    height: calc(100vh - var(--offset-from-page-top));
+}
+
+.nav-bar{
+
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+
+    width: 100%;
+    height: 100%;
+    background-color: rgb(75, 75, 75);
+}
+
+.nav-bar > a{
+    text-decoration: none;
+    height: 100%;
+    line-height: var(--nav-bar-height);
+    text-align: center;
+
+    color: white;
+
+    font-size: 10pt;
+    margin: 0px;
+}
+
+.nav-bar > a:hover {
+    background-color: black;
+}
+
+.nav-bar > a > span{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}

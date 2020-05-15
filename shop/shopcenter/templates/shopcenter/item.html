@@ -1,0 +1,44 @@
+{% extends "shopcenter/base-shop.html" %}
+{% load static %}
+
+{% block shop_links %}
+    <link rel="stylesheet" href="{% static 'shop/css/item.css' %}">
+{% endblock shop_links %}
+
+
+{% block shop_content %}
+    <div class="item-grid-container">
+        <div>
+            <h2>{{selected.title}}</h2>
+            <img src="{{selected.img}}" alt="">
+            <p>{{selected.disc}}</p>
+        </div>
+        <div>
+            <button class="add-cart" data-img={{selected.img_name}}>Add to Cart</button>
+            <h3>${{selected.price}}</h3>
+        </div>
+    </div>
+    <h2 style="margin-left: 10px">What other customers have bought: </h2>
+    <div class="suggested-item-grid">
+        {% for item in suggested %}
+            <div class="item-grid">
+                <h3 class="item-grid-title-item">{{item.title}}</h3>
+                <img src="{{item.img}}" alt="" class="item-grid-product-img">
+                <p class="item-grid-product-disc">{{item.disc}}</p>
+                <h3 class="item-grid-product-price">{{item.price}}</h3>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock shop_content %}
+
+
+{% block shop_javascript %}
+    <script src="{% static 'shop/js/item.js' %}"></script>
+    <script>
+        const add_cart_url = "{% url 'ajax-add-cart' %}"
+        const urls_item = {
+            "add_url": add_cart_url
+        }
+        item(urls_item)
+    </script>
+{% endblock shop_javascript %}

@@ -1,0 +1,35 @@
+{% extends "shopcenter/base-shop.html" %}
+{% load static %}
+
+{% block shop_links %}
+    <link rel="stylesheet" href="{% static 'shop/css/cart.css' %}">
+{% endblock shop_links %}
+
+
+{% block shop_content %}
+    <div class="cart-grid-container">
+        {% for item in cart %} 
+            <div class="cart-item" id="div-{{item.item.img_name}}" style="height: 300px;">
+                <img src={{item.item.img}} alt="" class="cart-item-img" id="img-{{item.item.img_name}}">
+                <p class="cart-item-dis" id="dis-{{item.item.img_name}}">{{item.item.disc}}</p>
+                <div class="cart-item-btn">
+                    <h3>${{item.item.price}}</h3>
+                    <button class="cart-item-btn-sub" id="btn-{{item.item.img_name}}">Remove</button>
+                    <input type="number" min=0 max={{item.amt}} value=0 class="num-input" id="val-{{item.item.img_name}}">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock shop_content %}
+
+
+{% block shop_javascript %}
+    <script src="{% static 'shop/js/cart.js' %}"></script>
+    <script>
+        const remove_url = "{% url 'ajax-remove-cart' %}"
+        const urls = {
+            "del_url": remove_url
+        }
+        cart(urls)
+    </script>
+{% endblock shop_javascript %}

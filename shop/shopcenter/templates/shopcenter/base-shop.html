@@ -1,0 +1,55 @@
+{% extends "shopcenter/base.html" %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'shop/css/base-shop.css' %}">
+    {% block shop_links %}{% endblock shop_links %}
+{% endblock links %}
+
+{% block content %}
+    <div class="banner">
+        <h1>Danazon</h1>
+        <input type="text" placeholder="search here" id="search-box">
+        <button id="search-button">Search</button>
+    </div>
+    <div class="base-shop-grid">
+        <div class="nav-bar">
+            <a href="{% url 'shop-featured' %}"><span>Featured</span></a>
+            <a href="{% url 'shop-furn' %}"><span>Furniture</span></a>
+            <a href="{% url 'shop-elec' %}"><span>Electronics</span></a>
+            <a href="{% url 'shop-otdr' %}"><span>Outdoors</span></a>
+            <a href="{% url 'shop-ptsp' %}"><span>Pet Products</span></a>
+            <a href="{% url 'shop-spts' %}"><span>Sports</span></a>
+            <a href="{% url 'shop-toys' %}"><span>toys</span></a>
+            <a href="{% url 'shop-source' %}"><span>Project Sources</span></a>
+            <div></div>
+            <div></div>
+            <div></div>
+            <a href="{% url 'shop-login' %}"><span>Logout</span></a>
+            <a href="{% url 'shop-checkout' %}"><span>Check Out</span></a>
+            {% if cart_size %}
+                <a href="{% url 'shop-cart' %}"><span>Cart: {{cart_size}}</span></a>
+            {% else %}
+                <a href="{% url 'shop-cart' %}"><span>Cart: 0</span></a>
+            {% endif %}
+        </div>
+        <div style="overflow: auto;">
+            {% block shop_content %}{% endblock shop_content %}
+        </div>
+    </div>
+{% endblock content %}
+
+
+{% block javascript %}  
+    <script src="{% static 'shop/js/base_shop.js' %}"></script>
+    <script>
+        const search_url = "{% url 'ajax-record-search' %}"
+        const item_url = "{% url 'ajax-go-to-item' %}"
+        const urls = {
+            "item_url": item_url,
+            "search_url": search_url
+        }
+        base_shop(urls)
+    </script>
+    {% block shop_javascript %}{% endblock shop_javascript %}
+{% endblock javascript %}

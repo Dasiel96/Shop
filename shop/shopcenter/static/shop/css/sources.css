@@ -1,0 +1,10 @@
+.link-disc > img{
+    float: left;
+    margin-right: 10px;
+}
+
+.link-disc:after{
+    content: "";
+    display: table;
+    clear: both;
+}

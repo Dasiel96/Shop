@@ -1,0 +1,27 @@
+
+{% extends "shopcenter/base.html" %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'shop/css/login.css' %}">
+{% endblock links %}
+
+{% block content %}
+    <div class="login-form-containter">
+        <div><h1> Danazon </h1></div>
+        <div class="login-form">
+            <input type="text" placeholder="Enter username" class="form-content-user-name">
+            <input type="text" placeholder="Enter password" class="form-content-user-password">
+            <button class="form-content-create-button">Signup</button>
+            <button class="form-content-login-button">Login</button>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block javascript %}
+    <script src="{% static 'shop/js/login.js' %}"></script>
+    <script>
+        const featured_url = "{% url 'shop-featured' %}"
+        login(featured_url)
+    </script>
+{% endblock javascript %}

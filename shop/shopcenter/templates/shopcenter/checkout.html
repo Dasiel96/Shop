@@ -1,0 +1,47 @@
+{% extends 'shopcenter/base-shop.html' %}
+{% load static %}
+
+
+{% block shop_links %}
+    <link rel="stylesheet" href="{% static 'shop/css/checkout.css' %}">
+{% endblock shop_links %}
+
+
+{% block shop_content %}
+    {% if total > 0 %}
+        <div class="shop-message">
+        <h1>
+            Thank you for shopping with us today. Your total is ${{total}}.
+            We are working hard to get your package out for delivery
+        </h1>
+        </div>
+        <div class="shop-message">
+            <h2 id="status-message">
+            </h2>
+        </div>
+    {% else %}
+        <div class="shop-message">
+            <h1>
+                Your cart is empty. You have not ordered anything yet.
+            </h1>
+        </div>
+    {% endif %}
+    <div class="prog-bar">
+        <div class="first-child"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="last-child"></div>
+    </div>
+{% endblock shop_content %}
+
+
+{% block shop_javascript %}
+    {% if total > 0 %}
+        <script src="{% static 'shop/js/checkout.js' %}"></script>
+        <script>
+            del_all_url = "{% url 'ajax-empty-cart' %}"
+            checkout(del_all_url)
+        </script>
+    {% endif %}
+{% endblock shop_javascript %}

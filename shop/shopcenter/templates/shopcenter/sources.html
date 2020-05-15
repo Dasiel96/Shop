@@ -1,0 +1,23 @@
+{% extends "shopcenter/base-shop.html" %}
+{% load static %}
+
+{% block shop_links %}
+    <link rel="stylesheet" href="{% static 'shop/css/sources.css' %}">
+{% endblock shop_links %}
+
+{% block shop_content %}
+    {% for item in sources %}
+        <div class="link-disc">
+            <img src="{{item.img}}" alt="" style="float: left; width: 100px; height: 100px;">
+            <p>
+                this asset came from 
+                <a href="{{item.src}}" target="_blank">here</a>
+            </p>
+            <br>
+        </div>
+    {% endfor %}
+{% endblock shop_content %}
+
+{% block shop_javascript %}
+
+{% endblock shop_javascript %}

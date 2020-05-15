@@ -1,0 +1,79 @@
+{% extends "shopcenter/base-shop.html" %}
+{% load static %}
+
+{% block shop_links %}
+    <link rel="stylesheet" href="{% static 'shop/css/featured.css' %}">
+{% endblock shop_links %}
+
+{% block shop_content %}
+        <div class="top-item-grid">
+            <div class="item-grid">
+                <h3 class="item-grid-title-item">{{top_all.title}}</h3>
+                <button class="item-grid-back-btn">Prev</button>
+                <img src={{top_all.img}} alt="" class="item-grid-product-img ft-img" data-img={{top_all.img_name}}>
+                <div class="item-grid-product-disc">
+                        <p>{{top_all.disc}}</p>
+                </div>
+                <h3 class="item-grid-product-price price">${{top_all.price}}</h3>
+                <button class="item-grid-next-btn">Next</button>  
+            </div>
+        </div>
+        <div class="top-catagory-item-grid">
+            <div class="item-grid">
+                <h3 class="item-grid-title-item">{{top_ele.title}}</h3>
+                <img src={{top_ele.img}} alt="" class="item-grid-product-img" data-img={{top_ele.img_name}}>
+                <div class="item-grid-product-disc">
+                    <p>{{top_ele.disc}}</p>
+                </div>
+                <h3 class="item-grid-product-price">${{top_ele.price}}</h3>
+            </div>
+            <div class="item-grid">
+                <h3 class="item-grid-title-item">{{top_ps.title}}</h3>
+                <img src={{top_ps.img}} alt="" class="item-grid-product-img" data-img={{top_ps.img_name}}>
+                <div class="item-grid-product-disc">
+                    <p>{{top_ps.disc}}</p>
+                </div>
+                <h3 class="item-grid-product-price">${{top_ps.price}}</h3>
+            </div>
+            <div class="item-grid">
+                <h3 class="item-grid-title-item">{{top_furn.title}}</h3>
+                <img src={{top_furn.img}} alt="" class="item-grid-product-img" data-img={{top_furn.img_name}}>
+                <div class="item-grid-product-disc">
+                    <p>{{top_furn.disc}}</p>
+                </div>
+                <h3 class="item-grid-product-price">${{top_furn.price}}</h3>
+            </div>
+            <div class="item-grid">
+                <h3 class="item-grid-title-item">{{top_od.title}}</h3>
+                <img src={{top_od.img}} alt="" class="item-grid-product-img" data-img={{top_od.img_name}}>
+                <div class="item-grid-product-disc">
+                    <p>{{top_od.disc}}</p>
+                </div>
+                <h3 class="item-grid-product-price">${{top_od.price}}</h3>
+            </div>
+            <div class="item-grid">
+                <h3 class="item-grid-title-item">{{top_sprt.title}}</h3>
+                <img src="{{top_sprt.img}}" alt="" class="item-grid-product-img">
+                <div class="item-grid-product-disc">
+                    <p>{{top_sprt.disc}}</p>
+                </div>
+                <h3 class="item-grid-product-price">${{top_sprt.price}}</h3>
+            </div>
+            <div class="item-grid">
+                <h3 class="item-grid-title-item">{{top_toy.title}}</h3>
+                <img src="{{top_toy.img}}" alt="" class="item-grid-product-img">
+                <div class="item-grid-product-disc">
+                    <p>{{top_toy.disc}}</p>
+                </div>
+                <h3 class="item-grid-product-price">${{top_toy.price}}</h3>
+            </div>
+        </div>
+{% endblock shop_content %}
+
+{% block shop_javascript %}
+    <script src="{% static 'shop\js\featured.js' %}"></script>
+    <script>
+        const featured_change_img_url = "{% url 'ajax-change-img' %}"
+        featured(featured_change_img_url)
+    </script>
+{% endblock shop_javascript %}

@@ -1,0 +1,39 @@
+.item-grid-container{
+    display: grid;
+    grid-template-columns: 1fr 20%;
+    grid-template-rows: 1fr;
+    width: 99%;
+    height: 75%;
+
+    column-gap: 10px;
+    margin: auto;
+}
+
+div.item-grid-container img{
+    float: left;
+    width: 300px;
+    height: 300px;
+    margin-right: 10px;
+}
+
+div.item-grid-container button{
+    height: 10%;
+    width: 100%;
+    margin-top: 85%;
+}
+
+div.item-grid-container h3{
+    text-align: center;
+}
+
+.suggested-item-grid{
+    display: grid;
+    grid-auto-columns: 300px;
+    grid-template-rows: auto;
+    grid-auto-flow: column;
+    overflow-x: auto;
+
+    column-gap: 5px;
+    width: 100%;
+    
+}
